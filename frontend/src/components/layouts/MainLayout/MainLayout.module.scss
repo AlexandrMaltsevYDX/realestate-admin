@@ -1,0 +1,47 @@
+@import "~global_styles/variables";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+.MainLayOut {
+    font-family: "Inter", sans-serif;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "sidebar navbar navbar"
+        "sidebar content content"
+        "sidebar footer footer";
+    height: 100vh;
+
+    @include mobile {
+        grid-template-columns: 60px auto;
+        grid-template-areas:
+            "sidebar navbar"
+            "sidebar content"
+            "sidebar footer";
+    }
+}
+.MainLayOut__sidebar {
+    grid-area: sidebar;
+    background-color: #333;
+    color: white;
+}
+
+.MainLayOut__content {
+    grid-area: content;
+    padding: 20px;
+}
+
+.MainLayOut__navbar {
+    grid-area: navbar;
+    background-color: #444;
+    color: white;
+    padding: 10px;
+}
+
+.MainLayOut__footer {
+    grid-area: footer;
+    background-color: #555;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

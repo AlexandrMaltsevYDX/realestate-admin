@@ -1,0 +1,36 @@
+@import "~global_styles/variables";
+
+.link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    line-height: 30px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    background-color: rgb(87, 84, 81);
+}
+
+.subItemBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 0;
+    padding-left: 10px;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.subItemBox_open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    visibility: visible;
+    line-height: 30px;
+    opacity: 1;
+    max-height: 1000px;
+    overflow: visible;
+    transition: all 1s linear;
+}
