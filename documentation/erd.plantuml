@@ -1,0 +1,244 @@
+@startuml
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+' skinparam linetype ortho
+skinparam  class {
+    BackgroundColor<<m-m>> #A9DCDF
+    BackgroundColor<<to-do>> #E06E6E
+}
+package "re-object" {
+entity "ReObject" as ReObject <<to-do>> {
+    **PK: id**
+    --
+    category: <<Category>>             
+    type_house: <<TypeHouse>>           
+    windows_orientation: <<WindowsOrientation>>
+    ownership: **<<Ownership>>**
+    land_category: <<LandCategory>>
+    relief_area: <<ReliefArea>>
+    fencing: <<Fencing>>
+    foundation: <<Foundation>>
+    wall_material: <<WallMaterial>>
+    *description: <<Description>>
+    village_fences: <<VillageFences>>
+    *engineering_services: <<EngineeringServices>>
+    *place: <<Place>>
+    --
+        number_of_storeys
+    *   floor
+        number_of_rooms
+        total_area
+        kitchen_area
+        land_area
+        living_area
+        buildings_on_site
+        buildings_of_vilages
+}
+}
+
+package "Attributes" {
+entity "Category" as Category {
+    **PK: id**
+    --
+    name
+}
+
+entity "TypeHouse" as TypeHouse {
+    **PK: id**
+    --
+    name
+}
+entity "WindowsOrientation" as WindowsOrientation {
+    **PK: id**
+    --
+    name
+}
+entity "LandCategory" as LandCategory {
+    **PK: id**
+    --
+    name
+}
+entity "ReliefArea" as ReliefArea {
+    **PK: id**
+    --
+    name
+}
+entity "Fencing" as Fencing {
+    **PK: id**
+    --
+    name
+}
+entity "Foundation" as Foundation {
+    **PK: id**
+    --
+    name
+}
+entity "WallMaterial" as WallMaterial {
+    **PK: id**
+    --
+    name
+}
+entity "EngineeringServices" as EngineeringServices {
+    **PK: id**
+    --
+    name
+}
+entity "VillageFences" as VillageFences {
+    **PK: id**
+    --
+    name
+}
+
+entity "Description" as Description <<to-do>> {
+    **PK: id**
+    --
+    name
+}
+
+entity "Ownership" as Ownership {
+    **PK: id**
+    --
+    name
+}
+}
+
+
+
+
+package "place"{
+entity "Place" as Place <<to-do>>{
+    **PK: id**
+    --
+    country: <<Country>>
+    region: <<Region>>
+    city: <<City>>
+    district: <<District>>
+    street: <<Street>>
+    *house: integer
+    tag: <<Tag>>
+    *flat: integer
+    coordinates: <<Coordinates>>
+}
+
+entity "Country" as Country {
+    **PK: id**
+    --
+    value
+}
+entity "Region" as Region {
+    **PK: id**
+    --
+    value
+}
+entity "City" as City {
+    **PK: id**
+    --
+    value
+}
+entity "District" as District {
+    **PK: id**
+    --
+    value
+}
+entity "Street" as Street {
+    **PK: id**
+    --
+    value
+}
+entity "Tag" as Tag {
+    **PK: id**
+    --
+    value
+}
+
+entity "Coordinate" as Coordinate {
+    **PK: id**
+    --
+    ydx_latitude:
+    ydx_longitude:
+}
+
+}
+
+Place::country }o..|| Country::PK
+Place::region }o..|| Region::PK
+Place::city }o..|| City::PK
+Place::district }o..|| District::PK
+Place::street }o..|| Street::PK
+Place::tag }o..|| Tag::PK
+Place::tag }o..|| Coordinate::PK
+
+
+
+package "users" {
+entity "User" as User {
+    **PK: id**
+    --
+    first_name:
+    last_name:
+    email:
+    is_staff:
+    is_active:
+    date_joined:
+    objects:
+}
+}
+
+
+package "emploee" {
+entity "Employee" as Employee {
+    **PK: id**
+    --
+    position:
+    region:
+    description:
+}
+entity "Contact" as Contact {
+    **PK: id**
+    --
+    type: <<ContactsType>>
+    value:
+}
+
+entity "Position" as Position {
+    **PK: id**
+    --
+    value:
+}
+
+
+entity "EmployeeContacts" as EmployeeContacts{
+    **PK: id**
+    --
+    employee: <<Employee>>
+    contact: <<Contact>>
+}
+}
+
+Employee::position }o..|| Position::PK
+Employee::region }o..o{ Place::PK
+EmployeeContacts::employee }o..o{ Employee::PK
+EmployeeContacts::contact }o..o{ Contact::PK
+
+
+' ReObject
+
+ReObject::category }o..|| Category::PK
+ReObject::type_house }o..|| TypeHouse::PK
+ReObject::windows_orientation }o..|| WindowsOrientation::PK
+ReObject::ownership }o..|| Ownership::PK
+ReObject::land_category }o..|| LandCategory::PK
+ReObject::relief_area }o..|| ReliefArea::PK
+ReObject::fencing }o..|| Fencing::PK
+ReObject::foundation }o..|| Foundation::PK
+ReObject::wall_material }o..|| WallMaterial::PK
+ReObject::engineering_services }o..|| EngineeringServices::PK
+ReObject::village_fences }o..|| VillageFences::PK
+ReObject::description ||..|| Description::PK
+ReObject::place ||..|| Place::PK
+
+' Users
+
+@enduml

@@ -20,9 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-)vsrz^+mr(b5i*$e8a!n^j!@czyvz@+0^h!l7+s0ox06bkvk9y"
-)
+SECRET_KEY = "django-insecure-)vsrz^+mr(b5i*$e8a!n^j!@czyvz@+0^h!l7+s0ox06bkvk9y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,7 +42,14 @@ INSTALLED_APPS = [
     "mptt",
     "drf_spectacular",
     # internal apps
-    "apps.cards",
+    "apps.attributes",
+    "apps.users",
+    "apps.employees",
+    "apps.re_objects",
+    "apps.place",
+    "apps.clients",
+    "apps.blog",
+    "apps.services",
 ]
 
 MIDDLEWARE = [
@@ -55,7 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",  # ! for CORS
+    # "corsheaders.middleware.CorsMiddleware",  # ! for CORS
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -155,4 +160,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 
-CORS_ORIGIN_ALLOW_ALL = True  # ! FOR DEV
+# CORS_ORIGIN_ALLOW_ALL = True  # ! FOR DEV
+
+
+AUTH_USER_MODEL = "users.User"
