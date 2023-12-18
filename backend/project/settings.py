@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "apps.clients",
     "apps.blog",
     "apps.services",
+    "apps.s3media",
 ]
 
 MIDDLEWARE = [

@@ -18,3 +18,6 @@ class MediaModel(models.Model):
 class ProfileImages(models.Model):
     profile = models.ForeignKey("Profile", on_delete=models.CASCADE)
     media = models.ForeignKey("MediaModel", on_delete=models.CASCADE)
+
+
+# images

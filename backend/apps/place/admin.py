@@ -1,8 +1,6 @@
 from django.contrib import admin
 from apps.place import models
 
-# Register your models here.
-
 
 @admin.register(models.Place)
 class PlaceAdmin(admin.ModelAdmin):
@@ -36,11 +34,6 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(models.Street)
 class StreetAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(models.House)
-class HouseAdmin(admin.ModelAdmin):
     pass
 
 

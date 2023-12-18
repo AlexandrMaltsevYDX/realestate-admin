@@ -38,9 +38,7 @@ class Place(models.Model):
         verbose_name="Улица",
     )
 
-    house = models.ForeignKey(
-        _models.House,
-        on_delete=models.CASCADE,
+    house = models.PositiveIntegerField(
         null=True,
         verbose_name="Дом",
     )
@@ -52,9 +50,7 @@ class Place(models.Model):
         verbose_name="Тег",
     )
 
-    flat = models.ForeignKey(
-        _models.Flat,
-        on_delete=models.CASCADE,
+    flat = models.PositiveIntegerField(
         null=True,
         verbose_name="Квартира",
     )
